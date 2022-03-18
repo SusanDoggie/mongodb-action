@@ -1,0 +1,48 @@
+name: 'MongoDB Action'
+description: 'Start a MongoDB server'
+
+branding:
+  icon: 'database'
+  color: 'green'
+
+inputs:
+  version:
+    description: 'MongoDB version to use (default "latest")'
+    required: false
+    default: 'latest'
+
+  replica_set:
+    description: 'MongoDB replica set name (no replica set by default)'
+    required: false
+    default: ''
+
+  port:
+    description: 'MongoDB port to use (default 27017)'
+    required: false
+    default: 27017
+
+  database:
+    description: 'MongoDB db to create (default: none)'
+    required: false
+    default: ''
+
+  username:
+    description: 'MongoDB root username (default: none)'
+    required: false
+    default: ''
+
+  password:
+    description: 'MongoDB root password (default: none)'
+    required: false
+    default: ''
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.version }}
+    - ${{ inputs.replica_set }}
+    - ${{ inputs.port }}
+    - ${{ inputs.database }}
+    - ${{ inputs.username }}
+    - ${{ inputs.password }}
