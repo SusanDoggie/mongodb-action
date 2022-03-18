@@ -1,7 +1,4 @@
-'use strict'
 
-const { test } = require('uvu')
-const expect = require('expect')
 const Mongoose = require('mongoose')
 
 const { 
@@ -11,7 +8,7 @@ const {
      MONGO_REPLICA_SET,
 } = process.env
 
-test.before(async () => {
+beforeEach(async () => {
 
   const connectionString = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@localhost:${27017}/${MONGO_DATABASE}?replicaSet=${MONGO_REPLICA_SET}`
 
@@ -24,8 +21,7 @@ test.before(async () => {
   })
 })
 
-test.after(async () => {
-  await Mongoose.connection.db.dropDatabase()
+afterEach(async () => {
   await Mongoose.disconnect()
 })
 
@@ -66,5 +62,3 @@ test('uses transactions', async () => {
     await Customer.findOne({ name: 'test-customer' })
   ).not.toBeNull()
 })
-
-test.run()

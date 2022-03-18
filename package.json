@@ -1,8 +1,7 @@
 {
     "name": "@SusanDoggie/mongodb-action",
     "devDependencies": {
-        "expect": "^27.5.1",
-        "mongoose": "^6.2.7",
-        "uvu": "^0.5.3"
+        "jest": "^27.5.1",
+        "mongoose": "^6.2.7"
     }
 }
