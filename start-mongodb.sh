@@ -34,10 +34,14 @@ echo ::group::Starting MongoDB service
 docker run -d --name mongodb \
   -p ${MONGO_PORT}:27017 \
   mongo:${MONGO_VERSION} --replSet ${MONGO_REPLICA_SET}
+  
+echo "waiting mongodb start..."
 
 docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" mongodb
 
 until docker exec --tty mongodb mongo 'admin' --eval 'quit(0)'; do sleep 1; done
+
+echo "mongodb started."
 
 docker exec --tty mongodb mongo --eval "
   rs.initiate({
