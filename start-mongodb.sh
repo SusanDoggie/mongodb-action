@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+set -e
 
 MONGO_VERSION=$1
 MONGO_REPLICA_SET=$2
