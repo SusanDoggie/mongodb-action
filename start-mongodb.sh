@@ -13,7 +13,7 @@ echo "  - version [$MONGO_VERSION]"
 echo "  - database [$MONGO_DATABASE]"
 echo "  - replSet [$MONGO_REPLICA_SET]"
 
-if [ -z "$MONGODB_REPLICA_SET" ]; then
+if [ -z "$MONGO_REPLICA_SET" ]; then
 
   echo ::group::Starting MongoDB service
 
