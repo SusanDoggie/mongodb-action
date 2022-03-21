@@ -17,6 +17,8 @@ if [ -z "$MONGODB_REPLICA_SET" ]; then
 
   echo ::group::Starting MongoDB service
 
+  echo "starting mongodb..."
+
   docker run -d --name mongodb \
     -p ${MONGO_PORT}:27017 \
     -e MONGO_INITDB_DATABASE=${MONGO_DATABASE} \
@@ -30,6 +32,8 @@ if [ -z "$MONGODB_REPLICA_SET" ]; then
 fi
 
 echo ::group::Starting MongoDB service
+
+echo "starting single node mongodb..."
 
 docker run -d --name mongodb \
   -p ${MONGO_PORT}:27017 \
