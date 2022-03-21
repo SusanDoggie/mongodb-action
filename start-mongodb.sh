@@ -8,6 +8,11 @@ MONGO_DATABASE=$4
 MONGO_USERNAME=$5
 MONGO_PASSWORD=$6
 
+echo "  - port [$MONGO_PORT]"
+echo "  - version [$MONGO_VERSION]"
+echo "  - database [$MONGO_DATABASE]"
+echo "  - replSet [$MONGO_REPLICA_SET]"
+
 if [ -z "$MONGODB_REPLICA_SET" ]; then
 
   echo ::group::Starting MongoDB service
