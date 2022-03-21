@@ -10,7 +10,7 @@ const {
 
 beforeEach(async () => {
 
-  const connectionString = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@localhost:${27017}/${MONGO_DATABASE}?replicaSet=${MONGO_REPLICA_SET}`
+  const connectionString = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@localhost:${27017}/${MONGO_DATABASE}?replicaSet=${MONGO_REPLICA_SET}&authSource=admin`
 
   console.log('---------------------------------------------------------------------')
   console.log('connecting to MongoDB using connection string -> ' + connectionString)
