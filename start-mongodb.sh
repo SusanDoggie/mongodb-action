@@ -57,6 +57,8 @@ docker exec --tty mongodb mongo --eval "
   })
 "
 
+sleep 1
+
 docker exec --tty mongodb mongo admin --eval "
   db.createUser({
     user: '${MONGO_USERNAME}',
