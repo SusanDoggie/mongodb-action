@@ -10,6 +10,8 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    env:
+      MONGO_HOST: localhost
     strategy:
       fail-fast: false
       matrix:
@@ -32,8 +34,6 @@ jobs:
       run: npm install --global yarn && yarn install
     - name: Run tests
       run: yarn jest --roots ./test
-      env:
-        MONGO_HOST: localhost
   test-container:
     name: Test
     container: 
