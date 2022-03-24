@@ -16,6 +16,11 @@ inputs:
     required: false
     default: 'latest'
 
+  host:
+    description: 'MongoDB version to use (default "localhost")'
+    required: false
+    default: 'localhost'
+
   port:
     description: 'MongoDB port to use (default 27017)'
     required: false
@@ -47,6 +52,7 @@ runs:
   args:
     - ${{ inputs.network }}
     - ${{ inputs.version }}
+    - ${{ inputs.host }}
     - ${{ inputs.port }}
     - ${{ inputs.username }}
     - ${{ inputs.password }}
