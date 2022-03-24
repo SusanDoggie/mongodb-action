@@ -8,6 +8,8 @@ MONGO_PASSWORD=$4
 MONGO_DATABASE=$5
 MONGO_REPLICA_SET=$6
 
+docker network ls
+
 echo "  - port [$MONGO_PORT]"
 echo "  - version [$MONGO_VERSION]"
 echo "  - database [$MONGO_DATABASE]"
