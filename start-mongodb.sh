@@ -71,7 +71,7 @@ docker exec --tty mongodb mongo --eval "
   rs.initiate({
     _id: '${MONGO_REPLICA_SET}',
     members: [{
-       _id: 0,
+      _id: 0,
       host: 'localhost'
     }]
   })
