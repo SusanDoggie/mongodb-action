@@ -1,6 +1,7 @@
 name: Test
 on: [push, pull_request]
 env:
+  MONGO_HOSTNAME: mongo
   MONGO_DATABASE: miragedb
   MONGO_USERNAME: miragedb
   MONGO_PASSWORD: miragedb
@@ -24,6 +25,8 @@ jobs:
     - name: Start MongoDB Server
       uses: ./
       with:
+        network: ${{ job.container.network }}
+        host: ${{ env.MONGO_HOSTNAME }}
         username: ${{ env.MONGO_USERNAME }}
         password: ${{ env.MONGO_PASSWORD }}
         database: ${{ env.MONGO_DATABASE }}
