@@ -17,9 +17,9 @@ inputs:
     default: 'latest'
 
   host:
-    description: 'MongoDB version to use (default "localhost")'
+    description: 'MongoDB version to use (default "mongo")'
     required: false
-    default: 'localhost'
+    default: 'mongo'
 
   port:
     description: 'MongoDB port to use (default 27017)'
