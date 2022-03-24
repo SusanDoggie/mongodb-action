@@ -1,7 +1,7 @@
 name: Test
 on: [push, pull_request]
 env:
-  MONGO_HOST: mongo
+  MONGO_HOST: localhost
   MONGO_DATABASE: miragedb
   MONGO_USERNAME: miragedb
   MONGO_PASSWORD: miragedb
