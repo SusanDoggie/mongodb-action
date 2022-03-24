@@ -5,12 +5,12 @@ const {
     MONGO_USERNAME, 
     MONGO_PASSWORD, 
     MONGO_DATABASE,
-     MONGO_REPLICA_SET,
+    MONGO_REPLICA_SET,
 } = process.env
 
 beforeEach(async () => {
 
-  const connectionString = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@localhost:${27017}/${MONGO_DATABASE}?replicaSet=${MONGO_REPLICA_SET}&authSource=admin`
+  const connectionString = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@localhost:27017/${MONGO_DATABASE}?authSource=admin&replicaSet=${MONGO_REPLICA_SET}&directConnection=true`
 
   console.log('---------------------------------------------------------------------')
   console.log('connecting to MongoDB using connection string -> ' + connectionString)
