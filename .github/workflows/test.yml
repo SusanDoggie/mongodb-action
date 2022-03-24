@@ -8,6 +8,8 @@ env:
 jobs:
   test:
     name: Test
+    container: 
+      image: docker://ubuntu:latest
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
