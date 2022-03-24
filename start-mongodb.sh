@@ -43,7 +43,19 @@ echo "waiting mongodb start..."
 
 docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" mongodb
 
-until docker exec --tty mongodb mongo 'admin' --eval 'quit(0)'; do sleep 1; done
+sleep 1
+TIMER=0
+
+until docker exec --tty mongodb mongo 'admin' --eval 'quit(0)'; do
+  sleep 1
+  echo "."
+  TIMER=$((TIMER + 1))
+
+  if [[ $TIMER -eq 20 ]]; then
+    echo "MongoDB did not initialize within 20 seconds. Exiting."
+    exit 2
+  fi
+done
 
 echo "mongodb started."
 
@@ -70,4 +82,7 @@ docker exec --tty mongodb mongo admin --eval "
   })
 "
 
+docker exec --tty mongodb mongo --eval "
+  rs.status()
+"
 echo ::endgroup::
