@@ -10,14 +10,14 @@ MONGO_PASSWORD=$6
 MONGO_DATABASE=$7
 MONGO_REPLICA_SET=$8
 
-echo "  - network [$DOCKER_NETWORK]"
-echo "  - host [$MONGO_HOST]"
-echo "  - port [$MONGO_PORT]"
-echo "  - version [$MONGO_VERSION]"
-echo "  - database [$MONGO_DATABASE]"
-echo "  - replSet [$MONGO_REPLICA_SET]"
+echo "  - network [${DOCKER_NETWORK}]"
+echo "  - host [${MONGO_HOST}]"
+echo "  - port [${MONGO_PORT}]"
+echo "  - version [${MONGO_VERSION}]"
+echo "  - database [${MONGO_DATABASE}]"
+echo "  - replSet [${MONGO_REPLICA_SET}]"
 
-if [ -z "$MONGO_REPLICA_SET" ]; then
+if [ -z "${MONGO_REPLICA_SET}" ]; then
 
   echo ::group::Starting MongoDB service
 
@@ -72,7 +72,7 @@ docker exec --tty mongodb mongo --eval "
     _id: '${MONGO_REPLICA_SET}',
     members: [{
       _id: 0,
-      host: 'localhost'
+      host: '${MONGO_HOST}:${MONGO_PORT}'
     }]
   })
 "
