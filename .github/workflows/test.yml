@@ -10,6 +10,8 @@ jobs:
     name: Test
     container: 
       image: docker://ubuntu:latest
+      ports:
+        - 27017
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
