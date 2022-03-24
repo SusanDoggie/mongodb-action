@@ -2,14 +2,12 @@
 set -e
 
 MONGO_VERSION=$1
-MONGO_HOST=$2
-MONGO_PORT=$3
-MONGO_USERNAME=$4
-MONGO_PASSWORD=$5
-MONGO_DATABASE=$6
-MONGO_REPLICA_SET=$7
+MONGO_PORT=$2
+MONGO_USERNAME=$3
+MONGO_PASSWORD=$4
+MONGO_DATABASE=$5
+MONGO_REPLICA_SET=$6
 
-echo "  - host [$MONGO_HOST]"
 echo "  - port [$MONGO_PORT]"
 echo "  - version [$MONGO_VERSION]"
 echo "  - database [$MONGO_DATABASE]"
@@ -22,8 +20,6 @@ if [ -z "$MONGO_REPLICA_SET" ]; then
   echo "starting mongodb..."
 
   docker run -d --name mongodb \
-    --network "host" \
-    --hostname ${MONGO_HOST} \
     -p ${MONGO_PORT}:27017 \
     -e MONGO_INITDB_DATABASE=${MONGO_DATABASE} \
     -e MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME} \
@@ -40,8 +36,6 @@ echo ::group::Starting MongoDB service
 echo "starting single node mongodb..."
 
 docker run -d --name mongodb \
-  --network "host" \
-  --hostname ${MONGO_HOST} \
   -p ${MONGO_PORT}:27017 \
   mongo:${MONGO_VERSION} --replSet ${MONGO_REPLICA_SET}
   

@@ -11,11 +11,6 @@ inputs:
     required: false
     default: 'latest'
 
-  hostname:
-    description: 'MongoDB hostname to use (default "mongo")'
-    required: false
-    default: 'mongo'
-
   port:
     description: 'MongoDB port to use (default 27017)'
     required: false
@@ -46,7 +41,6 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.version }}
-    - ${{ inputs.hostname }}
     - ${{ inputs.port }}
     - ${{ inputs.username }}
     - ${{ inputs.password }}

@@ -2,7 +2,6 @@
 const Mongoose = require('mongoose')
 
 const { 
-    MONGO_HOST, 
     MONGO_USERNAME, 
     MONGO_PASSWORD, 
     MONGO_DATABASE,
@@ -11,7 +10,7 @@ const {
 
 beforeEach(async () => {
 
-  const connectionString = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:27017/${MONGO_DATABASE}?authSource=admin&replicaSet=${MONGO_REPLICA_SET}&directConnection=true`
+  const connectionString = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@localhost:27017/${MONGO_DATABASE}?authSource=admin&replicaSet=${MONGO_REPLICA_SET}&directConnection=true`
 
   console.log('---------------------------------------------------------------------')
   console.log('connecting to MongoDB using connection string -> ' + connectionString)
