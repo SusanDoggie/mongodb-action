@@ -8,6 +8,8 @@ const {
     MONGO_REPLICA_SET,
 } = process.env
 
+console.log(process.env)
+
 beforeEach(async () => {
 
   const connectionString = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@localhost:27017/${MONGO_DATABASE}?authSource=admin&replicaSet=${MONGO_REPLICA_SET}&directConnection=true`
