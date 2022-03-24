@@ -11,20 +11,15 @@ inputs:
     required: false
     default: 'latest'
 
-  replica_set:
-    description: 'MongoDB replica set name (no replica set by default)'
+  hostname:
+    description: 'MongoDB hostname to use (default "mongo")'
     required: false
-    default: ''
+    default: 'mongo'
 
   port:
     description: 'MongoDB port to use (default 27017)'
     required: false
-    default: 27017
-
-  database:
-    description: 'MongoDB db to create (default: none)'
-    required: false
-    default: ''
+    default: '27017'
 
   username:
     description: 'MongoDB root username (default: none)'
@@ -36,13 +31,24 @@ inputs:
     required: false
     default: ''
 
+  database:
+    description: 'MongoDB db to create (default: none)'
+    required: false
+    default: ''
+
+  replica_set:
+    description: 'MongoDB replica set name (no replica set by default)'
+    required: false
+    default: ''
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.version }}
-    - ${{ inputs.replica_set }}
+    - ${{ inputs.hostname }}
     - ${{ inputs.port }}
-    - ${{ inputs.database }}
     - ${{ inputs.username }}
     - ${{ inputs.password }}
+    - ${{ inputs.database }}
+    - ${{ inputs.replica_set }}
