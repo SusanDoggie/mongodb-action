@@ -29,6 +29,6 @@ jobs:
         database: ${{ env.MONGO_DATABASE }}
         replica_set: ${{ env.MONGO_REPLICA_SET }}
     - name: Install dependencies
-      run: yarn install
+      run: npm install --global yarn && yarn install
     - name: Run tests
       run: yarn jest --roots ./test
