@@ -54,7 +54,7 @@ docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}
 sleep 1
 TIMER=0
 
-until docker exec --tty mongodb mongo 'admin' --eval 'quit(0)'; do
+until docker exec --tty mongodb mongosh 'admin' --eval 'quit(0)'; do
   sleep 1
   echo "."
   TIMER=$((TIMER + 1))
@@ -67,7 +67,7 @@ done
 
 echo "mongodb started."
 
-docker exec --tty mongodb mongo --eval "
+docker exec --tty mongodb mongosh --eval "
   rs.initiate({
     _id: '${MONGO_REPLICA_SET}',
     members: [{
@@ -79,7 +79,7 @@ docker exec --tty mongodb mongo --eval "
 
 sleep 1
 
-docker exec --tty mongodb mongo admin --eval "
+docker exec --tty mongodb mongosh admin --eval "
   db.createUser({
     user: '${MONGO_USERNAME}',
     pwd: '${MONGO_PASSWORD}',
@@ -90,7 +90,7 @@ docker exec --tty mongodb mongo admin --eval "
   })
 "
 
-docker exec --tty mongodb mongo --eval "
+docker exec --tty mongodb mongosh --eval "
   rs.status()
 "
 echo ::endgroup::
